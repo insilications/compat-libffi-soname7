@@ -17,7 +17,7 @@ export NM=/usr/bin/gcc-nm
 #
 export MAKEFLAGS=%{?_smp_mflags}
 #
-%global _lto_cflags 1
+%global _lto_cflags %{nil}
 #global _lto_cflags %{nil}
 %global _disable_maintainer_mode 1
 #%global _disable_maintainer_mode %{nil}

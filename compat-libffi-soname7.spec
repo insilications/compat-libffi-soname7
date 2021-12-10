@@ -4,7 +4,7 @@
 #
 Name     : compat-libffi-soname7
 Version  : 3.3
-Release  : 501
+Release  : 502
 URL      : https://github.com/libffi/libffi/releases/download/v3.3/libffi-3.3.tar.gz
 Source0  : https://github.com/libffi/libffi/releases/download/v3.3/libffi-3.3.tar.gz
 Summary  : Library supporting Foreign Function Interfaces
@@ -68,7 +68,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1638015915
+export SOURCE_DATE_EPOCH=1639112892
 export GCC_IGNORE_WERROR=1
 ## altflags_pgo content
 ## pgo generate
@@ -178,7 +178,7 @@ export CXXFLAGS="${CXXFLAGS_USE}"
 export FFLAGS="${FFLAGS_USE}"
 export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
-unset LIBS
+export LIBS="${LIBS_USE}"
 %autogen  --enable-shared --enable-static --disable-docs --with-gcc-arch=native
 make  %{?_smp_mflags}  V=1 VERBOSE=1  V=1 VERBOSE=1
 fi
@@ -216,14 +216,14 @@ unset LIBRARY_PATH
 unset CPATH="/usr/local/cuda/include"
 #
 export PATH="/usr/lib64/ccache/bin:/usr/local/cuda/bin:/usr/nvidia/bin:/usr/bin/haswell:/usr/bin:/usr/sbin"
-export ASFLAGS="${ASFLAGS}${ASFLAGS:+ }--32"
+export ASFLAGS="--32"
 ## altflags1_32 end
 %autogen  --enable-shared --disable-static --disable-docs --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
 make  %{?_smp_mflags}  V=1 VERBOSE=1  V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1638015915
+export SOURCE_DATE_EPOCH=1639112892
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
